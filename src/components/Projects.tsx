@@ -88,9 +88,7 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               onClick={() => setSelectedProject(index)}
-              className={`group cursor-pointer ${
-                project.highlight ? 'md:grid md:grid-cols-2 md:gap-8' : ''
-              }`}
+              className="group cursor-pointer md:w-[calc(50%-1rem)]"
             >
               <div className={`glass rounded-2xl overflow-hidden border border-gray-700/50 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 hover:border-gray-500 transition-all duration-500 ${
                 project.highlight ? '' : 'md:hover:scale-[1.02]'
