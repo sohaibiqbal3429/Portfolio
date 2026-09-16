@@ -13,6 +13,7 @@ const projects = [
     stats: ['53,000+ Views', '180,000 Watch Minutes', 'High Engagement'],
     techStack: ['React Native', 'Node.js', 'MongoDB', 'Admin Dashboard'],
     images: ['/images/reelflix-mobile-app.png', '/images/reelflix-admin-panel.png'],
+    liveUrl: '',
     highlight: true,
   },
   {
@@ -22,6 +23,7 @@ const projects = [
     stats: ['Modern UI/UX', 'Real-time Analytics', 'Integrated Billing'],
     techStack: ['React', 'Next.js', 'Node.js', 'MongoDB', 'Charts'],
     images: ['/images/CRM-login.png', '/images/CRM-dashboard.png'],
+    liveUrl: '',
     highlight: true,
   },
   {
@@ -31,6 +33,7 @@ const projects = [
     stats: ['Jornaya Integration', 'Lead Generation', 'Mobile-Friendly'],
     techStack: ['React', 'Node.js', 'Jornaya API', 'Responsive Design'],
     images: ['/images/Jornaya-dadshboard.png', '/images/Jornaya-Leadid-form.png'],
+    liveUrl: 'https://www.chattershealthsolutions.com/',
     highlight: false,
   },
   {
@@ -40,6 +43,7 @@ const projects = [
     stats: ['Interactive Calculator', 'Live Results', 'Dual Finance Options'],
     techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
     images: ['/images/Mogage-project.png'],
+    liveUrl: 'https://lend-home-zpe7.vercel.app/',
     highlight: false,
   },
   {
@@ -49,6 +53,7 @@ const projects = [
     stats: ['Professional Design', 'Trust-Focused', 'Quick Contact'],
     techStack: ['React', 'Tailwind CSS', 'Responsive Design'],
     images: ['/images/Roadside-project.png'],
+    liveUrl: 'https://grip-aid.vercel.app/',
     highlight: false,
   },
 ];
@@ -87,7 +92,7 @@ export default function Projects() {
                 project.highlight ? 'md:grid md:grid-cols-2 md:gap-8' : ''
               }`}
             >
-              <div className={`glass rounded-2xl overflow-hidden hover:border-gray-600 transition-all duration-500 ${
+              <div className={`glass rounded-2xl overflow-hidden border border-gray-700/50 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 hover:border-gray-500 transition-all duration-500 ${
                 project.highlight ? '' : 'md:hover:scale-[1.02]'
               }`}>
                 {/* Project Images */}
@@ -100,23 +105,25 @@ export default function Projects() {
                         key={img}
                         className={`relative flex-shrink-0 ${
                           project.images.length > 1 ? 'w-1/2' : 'w-full'
-                        } h-full group-hover:scale-105 transition-transform duration-700`}
+                        } h-full group-hover:scale-105 transition-transform duration-700 ease-out`}
                       >
                         <Image
                           src={img}
                           alt={`${project.title} - Screenshot ${imgIndex + 1}`}
                           fill
-                          className="object-cover"
+                          className="object-cover object-center"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority={index === 0}
                         />
                         {imgIndex < project.images.length - 1 && (
-                          <div className="absolute right-0 top-0 bottom-0 w-px bg-gray-700" />
+                          <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-500/50 to-transparent" />
                         )}
                       </div>
                     ))}
                     
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
-                      <span className="px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white font-medium flex items-center gap-2">
+                    {/* Elegant Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8 backdrop-blur-sm">
+                      <span className="px-8 py-4 bg-gradient-to-r from-blue-500/90 to-teal-500/90 backdrop-blur-md rounded-full text-white font-semibold flex items-center gap-2 shadow-lg hover:shadow-blue-500/30 transform hover:translate-y-[-2px] transition-all duration-300">
                         View Details <ChevronRight size={18} />
                       </span>
                     </div>
@@ -193,15 +200,17 @@ export default function Projects() {
 
             <div className="p-6">
               {/* Images */}
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
                 {projects[selectedProject].images.map((img, imgIndex) => (
-                  <div key={img} className="relative aspect-video rounded-xl overflow-hidden">
+                  <div key={img} className="relative aspect-video rounded-2xl overflow-hidden border-2 border-gray-700/50 shadow-xl hover:shadow-2xl hover:shadow-blue-500/15 hover:border-blue-500/30 transition-all duration-500 group/image">
                     <Image
                       src={img}
                       alt={`${projects[selectedProject].title} - Screenshot ${imgIndex + 1}`}
                       fill
-                      className="object-cover"
+                      className="object-cover object-center group-hover/image:scale-105 transition-transform duration-700 ease-out"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500" />
                   </div>
                 ))}
               </div>
@@ -248,6 +257,16 @@ export default function Projects() {
                 >
                   Discuss Similar Project
                 </a>
+                {projects[selectedProject].liveUrl && (
+                  <a
+                    href={projects[selectedProject].liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 glass border border-green-500/50 rounded-full font-semibold text-white hover:bg-green-500/10 transition-all duration-300 flex items-center gap-2"
+                  >
+                    <ExternalLink size={18} /> Live Site
+                  </a>
+                )}
                 <a
                   href="https://github.com/sohaibiqbal3429"
                   target="_blank"
