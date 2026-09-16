@@ -117,7 +117,8 @@ export default function About() {
                 Let&apos;s Talk
               </a>
               <a
-                href="/resume.pdf"
+                href="/Muhammad_Sohaib_CV.pdf"
+                download
                 className="px-6 py-3 glass border border-gray-600 rounded-full font-semibold text-white hover:bg-white/10 transition-all duration-300"
               >
                 Download CV
