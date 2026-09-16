@@ -32,7 +32,7 @@ const projects = [
     description: 'Medicare assistance platform with lead generation system integrated with Jornaya API for original LeadIDs. Includes a clean website and mobile-friendly contact form for connecting users with licensed agents.',
     stats: ['Jornaya Integration', 'Lead Generation', 'Mobile-Friendly'],
     techStack: ['React', 'Node.js', 'Jornaya API', 'Responsive Design'],
-    images: ['/images/Jornaya-dadshboard.png', '/images/Jornaya-Leadid-form.png'],
+    images: ['/images/Jornaya.png'],
     liveUrl: 'https://www.chattershealthsolutions.com/',
     highlight: false,
   },
