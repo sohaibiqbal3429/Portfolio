@@ -94,9 +94,7 @@ export default function Projects() {
                 project.highlight ? '' : 'md:hover:scale-[1.02]'
               }`}>
                 {/* Project Images */}
-                <div className={`relative overflow-hidden ${
-                  project.highlight ? 'aspect-video md:aspect-auto md:h-full' : 'aspect-video'
-                }`}>
+                <div className="relative aspect-video overflow-hidden">
                   <div className="flex h-full">
                     {project.images.map((img, imgIndex) => (
                       <div
