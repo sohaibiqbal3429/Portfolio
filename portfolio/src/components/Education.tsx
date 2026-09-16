@@ -5,18 +5,18 @@ import { GraduationCap, Calendar } from 'lucide-react';
 
 const education = [
   {
-    degree: 'Bachelor\'s Degree (In Progress/Completed)',
-    institution: 'University Name',
-    location: 'Islamabad/Rawalpindi, Pakistan',
-    period: '2021 - 2025',
-    description: 'Computer Science / Software Engineering / Related Field',
+    degree: "Associate's Degree – Computer Science",
+    institution: 'Virtual University of Pakistan',
+    location: 'Pakistan',
+    period: 'Sep 2024 – Dec 2026',
+    description: 'Computer Science',
   },
   {
-    degree: 'Higher Secondary Certificate (HSC)',
-    institution: 'College Name',
-    location: 'Pakistan',
-    period: '2019 - 2021',
-    description: 'Pre-Engineering / Computer Science',
+    degree: 'Diploma of Associate Engineering – Computer Information Technology',
+    institution: 'Punjab Board of Technical Education (PBTE), Lahore',
+    location: 'Lahore, Pakistan',
+    period: 'Sep 2021 – Jul 2024',
+    description: 'Computer Information Technology',
   },
 ];
 
