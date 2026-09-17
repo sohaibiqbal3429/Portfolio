@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Github, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -39,7 +39,7 @@ export default function Contact() {
     {
       icon: <Phone size={24} />,
       label: 'Phone',
-      value: '+92 333 455 1159',
+      value: '+92 33 455 1159',
       href: 'tel:+923345451159',
     },
     {
@@ -121,6 +121,15 @@ export default function Contact() {
                   className="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-white/10 hover:border-gray-600 transition-all duration-300 group"
                 >
                   <Github size={24} className="text-gray-400 group-hover:text-white transition-colors" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/muhammad-sohaib-085164268?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn profile"
+                  className="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-white/10 hover:border-gray-600 transition-all duration-300 group"
+                >
+                  <Linkedin size={24} className="text-gray-400 group-hover:text-white transition-colors" />
                 </a>
                 <a
                   href="mailto:sohaibiqbal3429@gmail.com"

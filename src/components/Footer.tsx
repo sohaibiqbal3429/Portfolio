@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -42,6 +42,15 @@ export default function Footer() {
                 className="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors group"
               >
                 <Github size={20} className="text-gray-400 group-hover:text-white transition-colors" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/muhammad-sohaib-085164268?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                className="w-10 h-10 glass rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors group"
+              >
+                <Linkedin size={20} className="text-gray-400 group-hover:text-white transition-colors" />
               </a>
               <a
                 href="mailto:sohaibiqbal3429@gmail.com"
@@ -91,7 +100,7 @@ export default function Footer() {
                   href="tel:+923345451159"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  +92 333 455 1159
+                  +92 33 455 1159
                 </a>
               </li>
               <li>

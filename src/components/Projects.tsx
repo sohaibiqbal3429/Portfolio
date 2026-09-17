@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
-import { ExternalLink, X, ChevronRight } from 'lucide-react';
+import { ExternalLink, LockKeyhole, X, ChevronRight } from 'lucide-react';
 
 const projects = [
   {
@@ -14,6 +14,8 @@ const projects = [
     techStack: ['React Native', 'Node.js', 'MongoDB', 'Admin Dashboard'],
     images: ['/images/reelflix.png'],
     liveUrl: '',
+    codeUrl: 'https://github.com/sohaibiqbal3429/Reelflix',
+    sourceNotice: '',
     highlight: true,
   },
   {
@@ -24,6 +26,8 @@ const projects = [
     techStack: ['React', 'Next.js', 'Node.js', 'MongoDB', 'Charts'],
     images: ['/images/CRM.png'],
     liveUrl: '',
+    codeUrl: '',
+    sourceNotice: 'The source code is a private company asset and is not publicly available.',
     highlight: true,
   },
   {
@@ -34,6 +38,8 @@ const projects = [
     techStack: ['React', 'Node.js', 'Jornaya API', 'Responsive Design'],
     images: ['/images/Jornaya.png'],
     liveUrl: 'https://www.chattershealthsolutions.com/',
+    codeUrl: '',
+    sourceNotice: 'The source code is a private company asset and is not publicly available.',
     highlight: false,
   },
   {
@@ -44,6 +50,8 @@ const projects = [
     techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
     images: ['/images/Mogage-project.png'],
     liveUrl: 'https://lend-home-zpe7.vercel.app/',
+    codeUrl: 'https://github.com/sohaibiqbal3429/LEND-HOME',
+    sourceNotice: '',
     highlight: false,
   },
   {
@@ -54,12 +62,16 @@ const projects = [
     techStack: ['React', 'Tailwind CSS', 'Responsive Design'],
     images: ['/images/Roadside-project.png'],
     liveUrl: 'https://grip-aid.vercel.app/',
+    codeUrl: 'https://github.com/sohaibiqbal3429/Grip-Aid',
+    sourceNotice: '',
     highlight: false,
   },
 ];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const featuredProject = projects[1];
+  const gridProjects = [projects[0], projects[4], projects[2], projects[3]];
 
   return (
     <section id="projects" className="py-20 md:py-32 relative bg-gradient-to-b from-transparent via-gray-900/50 to-transparent">
@@ -79,22 +91,70 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <div className="space-y-16">
-          {projects.map((project, index) => (
+        <div className="flex flex-col gap-10 md:gap-14">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            onClick={() => setSelectedProject(1)}
+            className="group cursor-pointer"
+          >
+            <div className="overflow-hidden rounded-3xl border border-gray-700/70 bg-gray-900/70 shadow-2xl shadow-black/30 transition-all duration-500 hover:border-blue-400/50 hover:shadow-blue-500/15">
+              <div className="flex flex-col lg:flex-row">
+                <div className="relative aspect-video overflow-hidden lg:min-h-[390px] lg:w-[58%] lg:aspect-auto">
+                  <Image
+                    src={featuredProject.images[0]}
+                    alt={`${featuredProject.title} - Screenshot 1`}
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-gray-950/25" />
+                </div>
+
+                <div className="flex flex-1 flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-blue-400">Featured Project</p>
+                  <h3 className="mb-1 text-2xl font-bold text-white sm:text-3xl">{featuredProject.title}</h3>
+                  <p className="mb-5 font-medium text-blue-400">{featuredProject.subtitle}</p>
+                  <p className="mb-6 text-gray-300 leading-relaxed">{featuredProject.description}</p>
+                  <div className="mb-5 flex flex-wrap gap-2">
+                    {featuredProject.stats.map((stat) => (
+                      <span key={stat} className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs text-blue-300">
+                        {stat}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {featuredProject.techStack.map((tech) => (
+                      <span key={tech} className="rounded-lg border border-gray-700 bg-white/5 px-3 py-1.5 text-xs text-gray-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-7 flex items-center gap-2 text-sm font-semibold text-white transition-transform duration-300 group-hover:translate-x-1">
+                    View Details <ChevronRight size={18} className="text-blue-400" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="flex flex-wrap gap-6 md:gap-8">
+            {gridProjects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              onClick={() => setSelectedProject(index)}
-              className="group cursor-pointer md:w-[calc(50%-1rem)]"
+              onClick={() => setSelectedProject(projects.indexOf(project))}
+              className="group flex w-full cursor-pointer md:w-[calc(50%-1rem)]"
             >
-              <div className={`glass rounded-2xl overflow-hidden border border-gray-700/50 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 hover:border-gray-500 transition-all duration-500 ${
-                project.highlight ? '' : 'md:hover:scale-[1.02]'
-              }`}>
+              <div className="flex w-full flex-col overflow-hidden rounded-2xl border border-gray-700/60 bg-gray-900/70 shadow-xl shadow-black/20 transition-all duration-500 hover:-translate-y-1 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/10">
                 {/* Project Images */}
-                <div className="relative aspect-video overflow-hidden">
+                <div className="relative aspect-video overflow-hidden border-b border-gray-700/50 bg-gray-950">
                   <div className="flex h-full">
                     {project.images.map((img, imgIndex) => (
                       <div
@@ -107,9 +167,8 @@ export default function Projects() {
                           src={img}
                           alt={`${project.title} - Screenshot ${imgIndex + 1}`}
                           fill
-                          className="object-cover object-center"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          priority={index === 0}
+                          className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 50vw"
                         />
                         {imgIndex < project.images.length - 1 && (
                           <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-500/50 to-transparent" />
@@ -117,9 +176,8 @@ export default function Projects() {
                       </div>
                     ))}
                     
-                    {/* Elegant Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8 backdrop-blur-sm">
-                      <span className="px-8 py-4 bg-gradient-to-r from-blue-500/90 to-teal-500/90 backdrop-blur-md rounded-full text-white font-semibold flex items-center gap-2 shadow-lg hover:shadow-blue-500/30 transform hover:translate-y-[-2px] transition-all duration-300">
+                    <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/85 via-black/25 to-transparent pb-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                      <span className="flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/90 to-teal-500/90 px-5 py-2.5 text-sm font-semibold text-white shadow-lg backdrop-blur-md">
                         View Details <ChevronRight size={18} />
                       </span>
                     </div>
@@ -127,13 +185,13 @@ export default function Projects() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="flex flex-1 flex-col p-6">
                   <div className="mb-4">
                     <h3 className="text-2xl font-bold text-white mb-1">{project.title}</h3>
                     <p className="text-blue-400 font-medium">{project.subtitle}</p>
                   </div>
 
-                  <p className="text-gray-300 mb-4 line-clamp-2">{project.description}</p>
+                  <p className="mb-4 line-clamp-2 text-gray-300">{project.description}</p>
 
                   {/* Stats */}
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -162,6 +220,7 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
+          </div>
         </div>
       </div>
 
@@ -263,15 +322,23 @@ export default function Projects() {
                     <ExternalLink size={18} /> Live Site
                   </a>
                 )}
-                <a
-                  href="https://github.com/sohaibiqbal3429"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 glass border border-gray-600 rounded-full font-semibold text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
-                >
-                  <ExternalLink size={18} /> View Code
-                </a>
+                {projects[selectedProject].codeUrl && (
+                  <a
+                    href={projects[selectedProject].codeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 glass border border-gray-600 rounded-full font-semibold text-white hover:bg-white/10 transition-all duration-300 flex items-center gap-2"
+                  >
+                    <ExternalLink size={18} /> View Code
+                  </a>
+                )}
               </div>
+              {projects[selectedProject].sourceNotice && (
+                <div className="mt-5 flex items-center gap-3 rounded-xl border border-blue-500/20 bg-blue-500/5 px-4 py-3 text-sm text-blue-200">
+                  <LockKeyhole size={18} className="shrink-0 text-blue-400" />
+                  <p>{projects[selectedProject].sourceNotice}</p>
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>

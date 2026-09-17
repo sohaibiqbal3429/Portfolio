@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Hero() {
@@ -92,6 +92,15 @@ export default function Hero() {
                 className="text-gray-400 hover:text-white transition-colors transform hover:scale-110"
               >
                 <Github size={28} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/muhammad-sohaib-085164268?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                className="text-gray-400 hover:text-white transition-colors transform hover:scale-110"
+              >
+                <Linkedin size={28} />
               </a>
               <a
                 href="mailto:sohaibiqbal3429@gmail.com"

@@ -67,6 +67,15 @@ export default function Navbar() {
               <Github size={20} />
             </a>
             <a
+              href="https://www.linkedin.com/in/muhammad-sohaib-085164268?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a
               href="mailto:sohaibiqbal3429@gmail.com"
               className="text-gray-400 hover:text-white transition-colors"
             >
@@ -111,6 +120,15 @@ export default function Navbar() {
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <Github size={20} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/muhammad-sohaib-085164268?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <Linkedin size={20} />
               </a>
               <a
                 href="mailto:sohaibiqbal3429@gmail.com"
