@@ -40,7 +40,7 @@ export default function Contact() {
       icon: <Phone size={24} />,
       label: 'Phone',
       value: '+92 333 455 1159',
-      href: 'tel:+923334551159',
+      href: 'tel:+923345451159',
     },
     {
       icon: <MapPin size={24} />,
