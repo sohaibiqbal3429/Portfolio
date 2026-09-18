@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const navLinks = [
@@ -39,8 +40,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="#home" className="text-xl md:text-2xl font-bold gradient-text">
-            MS
+          <Link
+            href="#home"
+            aria-label="Muhammad Sohaib Iqbal home"
+            className="group relative mr-2 flex items-center rounded-xl border border-blue-400/20 bg-slate-950/70 p-1.5 shadow-lg shadow-blue-950/30 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-400/50 hover:bg-slate-900 hover:shadow-blue-500/20 md:mr-3 md:p-2"
+          >
+            <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-400/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <Image
+              src="/images/ms-logo.svg"
+              alt="MS"
+              width={128}
+              height={80}
+              priority
+              className="relative h-8 w-auto rounded-md object-contain drop-shadow-[0_2px_8px_rgba(37,99,235,0.45)] md:h-9"
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 80" role="img" aria-label="MS logo">
+  <defs>
+    <linearGradient id="blue" x1="10" y1="12" x2="116" y2="68" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#19A7FF"/>
+      <stop offset="1" stop-color="#1266E8"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="80" rx="10" fill="#020617"/>
+  <path fill="url(#blue)" d="M12 62V18h14l14 22 14-22h14v44H54V40L42 59h-4L26 40v22H12Z"/>
+  <path transform="translate(4)" fill="url(#blue)" d="M113 21c-7-4-15-6-24-6-12 0-20 6-20 15 0 10 8 13 20 16 8 2 11 3 11 6 0 3-3 4-8 4-7 0-14-2-20-6v11c6 3 13 5 21 5 13 0 22-6 22-16 0-10-8-13-21-16-7-2-10-3-10-6 0-2 3-4 8-4 6 0 12 2 18 5V21Z"/>
+</svg>

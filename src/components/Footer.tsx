@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -27,8 +28,19 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <Link href="#home" className="text-2xl font-bold gradient-text mb-4 inline-block">
-              MS
+            <Link
+              href="#home"
+              aria-label="Muhammad Sohaib Iqbal home"
+              className="group relative mb-5 inline-flex items-center rounded-xl border border-blue-400/20 bg-slate-950/70 p-2 shadow-lg shadow-blue-950/30 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-400/50 hover:bg-slate-900 hover:shadow-blue-500/20"
+            >
+              <span className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-400/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <Image
+                src="/images/ms-logo.svg"
+                alt="MS"
+                width={128}
+                height={80}
+                className="relative h-9 w-auto rounded-md object-contain drop-shadow-[0_2px_8px_rgba(37,99,235,0.45)]"
+              />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
               Full Stack Developer passionate about building modern, scalable web and mobile 
