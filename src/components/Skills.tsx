@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Code, Database, Smartphone, Cloud, Terminal, Layers } from 'lucide-react';
+import { easings, fadeUpStagger, scalePop, skillTag } from '@/lib/animations';
 
 const skillCategories = [
   {
@@ -42,61 +43,96 @@ const skillCategories = [
   },
 ];
 
+// Container variant for staggered card animation
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
 export default function Skills() {
   return (
     <section id="skills" className="py-20 md:py-32 relative bg-gradient-to-b from-transparent via-gray-900/50 to-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section heading with fade-up animation */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: easings.easeOut }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Technical <span className="gradient-text">Skills</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2, ease: easings.easeOut }}
+            className="text-gray-400 max-w-2xl mx-auto"
+          >
             Technologies and tools I work with
-          </p>
+          </motion.p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, index) => (
+        {/* Skills grid with staggered entrance */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {skillCategories.map((category) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass rounded-2xl p-6 hover:border-gray-600 transition-all duration-300 group"
+              variants={scalePop}
+              whileHover={{ 
+                scale: 1.03,
+                borderColor: 'rgba(255, 255, 255, 0.2)',
+                transition: { duration: 0.3, ease: easings.easeOut }
+              }}
+              className="glass rounded-2xl p-6 transition-all duration-300 group cursor-default"
             >
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${category.color} mb-4`}>
+              <motion.div 
+                className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${category.color} mb-4`}
+                whileHover={{ rotate: -5, scale: 1.1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+              >
                 {category.icon}
-              </div>
+              </motion.div>
 
               <h3 className="text-xl font-bold text-white mb-4">{category.title}</h3>
 
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span
+                  <motion.span
                     key={skill}
-                    className="px-3 py-1.5 bg-white/5 border border-gray-700 rounded-lg text-sm text-gray-300 hover:border-gray-500 hover:bg-white/10 transition-all duration-200 cursor-default"
+                    variants={skillTag}
+                    initial="rest"
+                    whileHover="hover"
+                    className="px-3 py-1.5 bg-white/5 border border-gray-700 rounded-lg text-sm text-gray-300 cursor-default transition-colors"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Additional Stats */}
+        {/* Additional Stats with staggered scale animation */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: easings.easeOut }}
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
@@ -110,8 +146,18 @@ export default function Skills() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-              className="glass rounded-2xl p-6 text-center"
+              transition={{ 
+                duration: 0.5, 
+                delay: 0.5 + index * 0.1,
+                type: 'spring',
+                stiffness: 300,
+                damping: 20
+              }}
+              whileHover={{ 
+                scale: 1.05,
+                transition: { duration: 0.2 }
+              }}
+              className="glass rounded-2xl p-6 text-center cursor-default"
             >
               <p className="text-4xl md:text-5xl font-bold gradient-text mb-2">{stat.number}</p>
               <p className="text-gray-400 text-sm">{stat.label}</p>
